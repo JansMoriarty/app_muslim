@@ -13,6 +13,9 @@ dependencies:
   http: ^0.13.4
   provider: ^6.1.2
   intl: ^0.18.1
+  hijri: ^3.0.0
+  google_nav_bar: ^5.0.7
+  lottie: ^3.0.0
   
 dev_dependencies:
   flutter_test:
@@ -25,6 +28,8 @@ flutter:
   assets:
    - assets/images/mosque.png
    - assets/images/quran.png
+   - assets/images/quran.json
+   - assets/images/read.json
 
   fonts:
     - family: Poppins
