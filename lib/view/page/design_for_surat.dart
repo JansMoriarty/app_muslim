@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:muslim_app/view/loading%20design/loading_surat.dart';
 import 'package:provider/provider.dart';
 import 'package:muslim_app/viewmodel/surat_viewmodel.dart';
 
@@ -73,7 +74,7 @@ class _NewHomeState extends State<NewHome> {
                     'assets/images/read.json',
                     width: 1200, // Sesuaikan ukuran animasi
                     height: 1000,
-                    fit: BoxFit.contain, 
+                    fit: BoxFit.contain,
                   ),
                 ),
               ),
@@ -122,10 +123,7 @@ class _NewHomeState extends State<NewHome> {
                       child: Consumer<SuratViewModel>(
                         builder: (context, viewModel, child) {
                           if (viewModel.isLoading) {
-                            return Center(
-                              child: CircularProgressIndicator(
-                                  color: Colors.orange),
-                            );
+                            return LoadingSuratList();
                           } else if (viewModel.errorMessage != null) {
                             return Center(child: Text(viewModel.errorMessage!));
                           } else if (viewModel.suratModel?.data == null) {

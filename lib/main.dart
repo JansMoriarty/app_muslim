@@ -3,6 +3,7 @@ import 'package:muslim_app/view/page/design_for_surat.dart';
 import 'package:muslim_app/main_page.dart';
 import 'package:muslim_app/view/page/home.dart';
 import 'package:muslim_app/view/page/jadwal_page.dart';
+import 'package:muslim_app/view/loading%20design/loading_design.dart';
 import 'package:muslim_app/view/page/month_jadwal_page.dart';
 import 'package:muslim_app/view/page/surat_page.dart';
 import 'package:muslim_app/viewmodel/doa_viewmodel.dart';

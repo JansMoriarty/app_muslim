@@ -1,6 +1,7 @@
 // ignore_for_file: sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:muslim_app/view/loading%20design/loading_design.dart';
 import 'package:muslim_app/viewmodel/jadwal_viewmodel.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
@@ -112,10 +113,7 @@ class _JadwalPageState extends State<JadwalPage> {
       body: Consumer<JadwalViewmodel>(
         builder: (context, viewModel, child) {
           if (viewModel.isLoading) {
-            return const Center(
-                child: CircularProgressIndicator(
-              color: Colors.orange,
-            ));
+            return const LoadingJadwalPage();
           } else if (viewModel.errorMessage != null) {
             return Center(child: Text(viewModel.errorMessage!));
           } else if (viewModel.jadwal?.data?.jadwal == null) {
@@ -132,7 +130,8 @@ class _JadwalPageState extends State<JadwalPage> {
 
             return RefreshIndicator(
               onRefresh: _onRefresh, // Fungsi refresh
-              color: const Color.fromARGB(255, 255, 255, 255), // Mengubah warna indikator (misalnya putih)
+              color: const Color.fromARGB(255, 255, 255,
+                  255), // Mengubah warna indikator (misalnya putih)
               backgroundColor: Colors.orange, // Mengubah background indikator
               displacement: 80,
               child: SingleChildScrollView(
@@ -158,7 +157,8 @@ class _JadwalPageState extends State<JadwalPage> {
                                     style: TextStyle(
                                         fontSize: 13,
                                         fontFamily: 'Poppins',
-                                        color: Color.fromARGB(255, 180, 180, 180)),
+                                        color:
+                                            Color.fromARGB(255, 180, 180, 180)),
                                   ),
                                   SizedBox(height: 4),
                                   Text(
@@ -167,59 +167,70 @@ class _JadwalPageState extends State<JadwalPage> {
                                         fontSize: 20,
                                         fontWeight: FontWeight.w600,
                                         fontFamily: 'Poppins',
-                                        color: Color.fromARGB(255, 255, 255, 255)),
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255)),
                                   ),
                                 ],
                               ),
                               IconButton(
                                 icon: Icon(
                                   Icons.menu,
-                                  color: const Color.fromARGB(255, 255, 255, 255),
+                                  color:
+                                      const Color.fromARGB(255, 255, 255, 255),
                                   size: 28,
                                 ),
                                 onPressed: () {
                                   showMenu(
-                                    context: context,
-                                    position: RelativeRect.fromLTRB(
-                                        100.0, 50.0, 0.0, 0.0), // Posisi menu
-                                    items: [
-                                      PopupMenuItem(
-                                        value: 'settings',
-                                        child: Container(
-                                          constraints: BoxConstraints(
-                                              minWidth: 0,
-                                              minHeight:
-                                                  50), // Atur ukuran menu
+                                      context: context,
+                                      position: RelativeRect.fromLTRB(
+                                          100.0, 50.0, 0.0, 0.0), // Posisi menu
+                                      items: [
+                                        PopupMenuItem(
+                                          value: 'settings',
+                                          child: Container(
+                                            constraints: BoxConstraints(
+                                                minWidth: 0,
+                                                minHeight:
+                                                    50), // Atur ukuran menu
+                                            child: Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.settings,
+                                                  color: Colors.white,
+                                                  size: 20,
+                                                ),
+                                                SizedBox(width: 10),
+                                                Text('Settings',
+                                                    style: TextStyle(
+                                                        fontFamily: 'Poppins',
+                                                        color: Colors.white,
+                                                        fontSize: 14)),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        PopupMenuItem(
+                                          value: 'about',
                                           child: Row(
                                             children: [
-                                              Icon(Icons.settings,
-                                                  color: Colors.white, size: 20,),
+                                              Icon(
+                                                Icons.info,
+                                                color: Colors.white,
+                                                size: 20,
+                                              ),
                                               SizedBox(width: 10),
-                                              Text('Settings',
-                                                  style: TextStyle(
-                                                      fontFamily: 'Poppins',
-                                                      color: Colors.white, fontSize: 14)),
+                                              Text(
+                                                'About App',
+                                                style: TextStyle(
+                                                    fontFamily: 'Poppins',
+                                                    color: Colors.white,
+                                                    fontSize: 14),
+                                              ),
                                             ],
                                           ),
                                         ),
-                                      ),
-                                      PopupMenuItem(
-                                        value: 'about',
-                                        child: Row(
-                                          children: [
-                                            Icon(Icons.info,
-                                                color: Colors.white, size: 20,),
-                                            SizedBox(width: 10),
-                                            Text('About App',
-                                                style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    color: Colors.white, fontSize: 14),),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                    color: Color(0xff181820)
-                                  );
+                                      ],
+                                      color: Color(0xff181820));
                                 },
                               )
                             ],
@@ -253,9 +264,10 @@ class _JadwalPageState extends State<JadwalPage> {
                                       Row(
                                         children: [
                                           Text(
-                                            'Read Qur`an',
+                                            'Daily Do`a',
                                             style: TextStyle(
-                                                color: Color.fromARGB(255, 223, 223, 223),
+                                                color: Color.fromARGB(
+                                                    255, 223, 223, 223),
                                                 fontFamily: 'Poppins',
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w600),
@@ -272,11 +284,12 @@ class _JadwalPageState extends State<JadwalPage> {
                                       ),
                                       SizedBox(height: 24),
                                       Text(
-                                        'Last read Al Fatihah',
+                                        'View more',
                                         style: TextStyle(
                                             fontFamily: 'Poppins',
                                             fontSize: 12,
-                                            color: Color.fromARGB(255, 172, 172, 172)),
+                                            color: Color.fromARGB(
+                                                255, 172, 172, 172)),
                                       ),
                                     ],
                                   ),
@@ -345,8 +358,9 @@ class _JadwalPageState extends State<JadwalPage> {
                                         Text(
                                           hijriFormatted,
                                           style: TextStyle(
-                                              fontFamily: 'POppins',
-                                              color: Color.fromARGB(255, 194, 194, 194),
+                                              fontFamily: 'Poppins',
+                                              color: Color.fromARGB(
+                                                  255, 194, 194, 194),
                                               fontSize: 16.5,
                                               fontWeight: FontWeight.w600),
                                         ),
@@ -356,7 +370,7 @@ class _JadwalPageState extends State<JadwalPage> {
                                         Text(
                                           '${jadwal.tanggal}',
                                           style: TextStyle(
-                                              fontFamily: 'POppins',
+                                              fontFamily: 'Poppins',
                                               color: Color.fromARGB(
                                                   255, 163, 163, 163),
                                               fontSize: 11),
