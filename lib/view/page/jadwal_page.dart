@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:muslim_app/view/loading%20design/loading_design.dart';
+import 'package:muslim_app/view/page/detail_doa.dart';
+import 'package:muslim_app/view/page/surat_page.dart';
 import 'package:muslim_app/viewmodel/jadwal_viewmodel.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
@@ -144,7 +146,7 @@ class _JadwalPageState extends State<JadwalPage> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const SizedBox(height: 40),
+                          const SizedBox(height: 28),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -236,75 +238,89 @@ class _JadwalPageState extends State<JadwalPage> {
                             ],
                           ),
                           const SizedBox(height: 18),
-                          Container(
-                            width: double.infinity,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(18),
-                              color: Color(0xff181820),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: const Color.fromARGB(94, 0, 0, 0)
-                                      .withOpacity(0.1),
-                                  spreadRadius: 0,
-                                  blurRadius: 2,
-                                  offset: Offset(0, 0),
-                                ),
-                              ],
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Daily Do`a',
-                                            style: TextStyle(
-                                                color: Color.fromARGB(
-                                                    255, 223, 223, 223),
-                                                fontFamily: 'Poppins',
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w600),
-                                          ),
-                                          SizedBox(
-                                            width: 8,
-                                          ),
-                                          Icon(
-                                            Icons.keyboard_arrow_right_rounded,
-                                            color: Color(0xfffffffff),
-                                            size: 18,
-                                          )
-                                        ],
-                                      ),
-                                      SizedBox(height: 24),
-                                      Text(
-                                        'View more',
-                                        style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            fontSize: 12,
-                                            color: Color.fromARGB(
-                                                255, 172, 172, 172)),
-                                      ),
-                                    ],
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DoaPage(
+                                  
                                   ),
                                 ),
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(18),
-                                  child: Image.asset(
-                                    'assets/images/quran.png',
-                                    height: 150,
-                                    width: 120, // Sesuaikan tinggi gambar
-                                    fit: BoxFit
-                                        .cover, // Agar gambar memenuhi area
+                              );
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(18),
+                                color: Color(0xff181820),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: const Color.fromARGB(94, 0, 0, 0)
+                                        .withOpacity(0.1),
+                                    spreadRadius: 0,
+                                    blurRadius: 2,
+                                    offset: Offset(0, 0),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text(
+                                              'Daily Do`a',
+                                              style: TextStyle(
+                                                  color: Color.fromARGB(
+                                                      255, 223, 223, 223),
+                                                  fontFamily: 'Poppins',
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                            SizedBox(
+                                              width: 8,
+                                            ),
+                                            Icon(
+                                              Icons
+                                                  .keyboard_arrow_right_rounded,
+                                              color: Color(0xfffffffff),
+                                              size: 18,
+                                            )
+                                          ],
+                                        ),
+                                        SizedBox(height: 24),
+                                        Text(
+                                          'View more',
+                                          style: TextStyle(
+                                              fontFamily: 'Poppins',
+                                              fontSize: 12,
+                                              color: Color.fromARGB(
+                                                  255, 172, 172, 172)),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(18),
+                                    child: Image.asset(
+                                      'assets/images/quran.png',
+                                      height: 150,
+                                      width: 120, // Sesuaikan tinggi gambar
+                                      fit: BoxFit
+                                          .cover, // Agar gambar memenuhi area
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           const SizedBox(height: 40),
@@ -361,7 +377,7 @@ class _JadwalPageState extends State<JadwalPage> {
                                               fontFamily: 'Poppins',
                                               color: Color.fromARGB(
                                                   255, 194, 194, 194),
-                                              fontSize: 16.5,
+                                              fontSize: 14,
                                               fontWeight: FontWeight.w600),
                                         ),
                                         SizedBox(

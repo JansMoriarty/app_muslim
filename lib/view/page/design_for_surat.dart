@@ -145,114 +145,131 @@ class _NewHomeState extends State<NewHome> {
                               return Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 16, vertical: 8),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(18),
-                                    color: Color(0xff181820),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withOpacity(0.1),
-                                        spreadRadius: 0,
-                                        blurRadius: 2,
-                                        offset: Offset(0, 0),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(16.0),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(50),
-                                                  child: Container(
-                                                    width: 22,
-                                                    height: 22,
-                                                    color: Colors.orange
-                                                        .withOpacity(0.2),
-                                                    child: Center(
-                                                      child: Text(
-                                                        surat.nomor.toString(),
-                                                        style: TextStyle(
-                                                          fontSize: 11,
-                                                          fontFamily: 'Poppins',
-                                                          color: Colors.orange,
-                                                          fontWeight:
-                                                              FontWeight.w600,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    // Navigasi ke detail surat, contoh:
+                                    Navigator.pushNamed(
+                                      context,
+                                      '/detail-surah',
+                                      arguments: surat
+                                          .nomor, // asumsi kamu mau passing nomor surat
+                                    );
+                                  },
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 100,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(18),
+                                      color: Color(0xff181820),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black.withOpacity(0.1),
+                                          spreadRadius: 0,
+                                          blurRadius: 2,
+                                          offset: Offset(0, 0),
+                                        ),
+                                      ],
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(16.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            50),
+                                                    child: Container(
+                                                      width: 22,
+                                                      height: 22,
+                                                      color: Colors.orange
+                                                          .withOpacity(0.2),
+                                                      child: Center(
+                                                        child: Text(
+                                                          surat.nomor
+                                                              .toString(),
+                                                          style: TextStyle(
+                                                            fontSize: 11,
+                                                            fontFamily:
+                                                                'Poppins',
+                                                            color:
+                                                                Colors.orange,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                                SizedBox(width: 6),
-                                                Text(
-                                                  surat.namaLatin ?? '',
-                                                  style: TextStyle(
+                                                  SizedBox(width: 6),
+                                                  Text(
+                                                    surat.namaLatin ?? '',
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontFamily: 'Poppins',
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
+                                                  ),
+                                                  SizedBox(width: 6),
+                                                  Icon(
+                                                    Icons
+                                                        .keyboard_arrow_right_rounded,
+                                                    size: 18,
                                                     color: Colors.white,
-                                                    fontFamily: 'Poppins',
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.w600,
                                                   ),
-                                                ),
-                                                SizedBox(width: 6),
-                                                Icon(
-                                                  Icons
-                                                      .keyboard_arrow_right_rounded,
-                                                  size: 18,
-                                                  color: Colors.white,
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(height: 11),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  '${surat.jumlahAyat} Ayat',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    fontSize: 12,
-                                                    color: Colors.grey,
+                                                ],
+                                              ),
+                                              SizedBox(height: 11),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    '${surat.jumlahAyat} Ayat',
+                                                    style: TextStyle(
+                                                      fontFamily: 'Poppins',
+                                                      fontSize: 12,
+                                                      color: Colors.grey,
+                                                    ),
                                                   ),
-                                                ),
-                                                SizedBox(height: 2),
-                                                Text(
-                                                  '| ${surat.arti}',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Poppins',
-                                                    fontSize: 10,
-                                                    color: Colors.grey,
+                                                  SizedBox(height: 2),
+                                                  Text(
+                                                    '| ${surat.arti}',
+                                                    style: TextStyle(
+                                                      fontFamily: 'Poppins',
+                                                      fontSize: 10,
+                                                      color: Colors.grey,
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(18),
-                                        child: Opacity(
-                                          opacity: 0.4,
-                                          child: Image.asset(
-                                            'assets/images/quran.png',
-                                            height: 150,
-                                            width: 120,
-                                            fit: BoxFit.cover,
+                                                ],
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(18),
+                                          child: Opacity(
+                                            opacity: 0.4,
+                                            child: Image.asset(
+                                              'assets/images/quran.png',
+                                              height: 150,
+                                              width: 120,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               );

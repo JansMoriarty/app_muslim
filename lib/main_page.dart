@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:muslim_app/view/page/about.dart';
 import 'package:muslim_app/view/page/design_for_surat.dart';
 import 'package:muslim_app/view/page/jadwal_page.dart'; // Mengimpor JadwalPage
+import 'package:muslim_app/view/page/month_jadwal_page.dart';
 import 'package:muslim_app/view/page/surat_page.dart';  // Mengimpor SuratPage
 
 class AnimatedNavBar extends StatefulWidget {
@@ -43,11 +45,8 @@ class _AnimatedNavBarState extends State<AnimatedNavBar> {
         children: [
           JadwalPage(),  // Halaman 0: JadwalPage
           NewHome(),   // Halaman 1: SuratPage
-          Container(color: Color(0xff0E0E16),
-            child: Center(child: Text('Jadwal Bulanan', style: TextStyle(fontSize: 24, fontFamily: 'Poppins', color: Colors.white)))),  // Halaman 2: Favorites
-          Container(color: Color(0xff0E0E16),
-            child: Center(child: Text('Kiblat Page', style: TextStyle(fontSize: 24, fontFamily: 'Poppins', color: Colors.white)))),  // Halaman 2: Favorites
-          
+          MonthSchedulePage(),
+          AboutPage()
         ],
       ),
       bottomNavigationBar: Container(
@@ -67,13 +66,13 @@ class _AnimatedNavBarState extends State<AnimatedNavBar> {
               Icons.home_rounded,            // Ikon untuk JadwalPage
               Icons.menu_book,       // Ikon untuk SuratPage
               Icons.event,  // Ikon untuk Favorites
-              Icons.explore,          // Ikon untuk Profile
+              Icons.info,          // Ikon untuk Profile
             ];
             List<String> labels = [
               "Home",
               "Surah",
               "Jadwal",
-              "Kiblat"
+              "About"
             ];
             return GestureDetector(
               onTap: () => _onItemTapped(index), // Memilih tab saat ditekan

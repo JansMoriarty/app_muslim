@@ -1,54 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:muslim_app/view/page/detail_doa.dart';
+import 'package:muslim_app/viewmodel/doa_viewmodel.dart';
 import 'package:provider/provider.dart';
-import 'package:muslim_app/viewmodel/surat_viewmodel.dart';
 
-class SuratPage extends StatefulWidget {
+
+class DoaPage extends StatefulWidget {
   @override
-  _SuratPageState createState() => _SuratPageState();
+  _DoaPageState createState() => _DoaPageState();
 }
 
-class _SuratPageState extends State<SuratPage> {
+class _DoaPageState extends State<DoaPage> {
   @override
   void initState() {
     super.initState();
-    Provider.of<SuratViewModel>(context, listen: false).fetchSuratData();
+    Provider.of<DoaListViewModel>(context, listen: false).fetchDoaData();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffffffff),
-      body: Stack(
-        children: [Padding(
-          padding: const EdgeInsets.symmetric(vertical: 12),
-          child: Consumer<SuratViewModel>(
-            builder: (context, viewModel, child) {
-              if (viewModel.isLoading) {
-                return Center(child: CircularProgressIndicator(color: Colors.orange,));
-              } else if (viewModel.errorMessage != null) {
-                return Center(child: Text(viewModel.errorMessage!));
-              } else if (viewModel.suratModel?.data == null) {
-                return Center(child: Text("Tidak ada data."));
-              }
-        
-              return ListView.builder(
-                itemCount: viewModel.suratModel!.data!.length,
-                itemBuilder: (context, index) {
-                  final surat = viewModel.suratModel!.data![index];
-                  return Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        child: Consumer<DoaListViewModel>(
+          builder: (context, viewModel, child) {
+            if (viewModel.isLoading) {
+              return Center(
+                child: CircularProgressIndicator(
+                  color: Colors.orange,
+                ),
+              );
+            } else if (viewModel.errorMessage != null) {
+              return Center(child: Text(viewModel.errorMessage!));
+            } else if (viewModel.doaList == null || viewModel.doaList!.isEmpty) {
+              return Center(child: Text("Tidak ada data doa."));
+            }
+
+            return ListView.builder(
+              itemCount: viewModel.doaList!.length,
+              itemBuilder: (context, index) {
+                final doa = viewModel.doaList![index];
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailDoaPage(
+                          doaId: doa.id ?? '',
+                        ),
+                      ),
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     child: Container(
                       width: double.infinity,
                       height: 100,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(18),
-                        color: Color.fromARGB(255, 255, 255, 255),
+                        color: Colors.white,
                         boxShadow: [
                           BoxShadow(
-                            color: const Color.fromARGB(94, 0, 0, 0)
-                                .withOpacity(0.1),
-                            spreadRadius: 0,
+                            color: Colors.black.withOpacity(0.1),
                             blurRadius: 2,
                             offset: Offset(0, 0),
                           ),
@@ -71,29 +84,31 @@ class _SuratPageState extends State<SuratPage> {
                                           child: Container(
                                             width: 22,
                                             height: 22,
-                                            color: const Color.fromARGB(
-                                                44, 255, 153, 0),
+                                            color: Color.fromARGB(44, 255, 153, 0),
                                             child: Center(
                                               child: Text(
-                                                surat.nomor.toString(),
+                                                (index + 1).toString(),
                                                 style: TextStyle(
-                                                    fontSize: 11,
-                                                    fontFamily: 'Poppins',
-                                                    color: const Color.fromARGB(
-                                                        255, 255, 153, 0),
-                                                    fontWeight: FontWeight.w600),
+                                                  fontSize: 11,
+                                                  fontFamily: 'Poppins',
+                                                  color: Color.fromARGB(255, 255, 153, 0),
+                                                  fontWeight: FontWeight.w600,
+                                                ),
                                               ),
                                             ),
                                           ),
                                         ),
                                         SizedBox(width: 6),
-                                        Text(
-                                          surat.namaLatin ?? '',
-                                          style: TextStyle(
-                                            color: Color(0xff464646),
-                                            fontFamily: 'Poppins',
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w600,
+                                        Flexible(
+                                          child: Text(
+                                            doa.doa ?? '',
+                                            style: TextStyle(
+                                              color: Color(0xff464646),
+                                              fontFamily: 'Poppins',
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                            overflow: TextOverflow.ellipsis,
                                           ),
                                         ),
                                         SizedBox(width: 6),
@@ -105,28 +120,28 @@ class _SuratPageState extends State<SuratPage> {
                                     ),
                                     SizedBox(height: 11),
                                     Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          '${surat.jumlahAyat} Ayat',
+                                          doa.latin ?? '',
                                           style: TextStyle(
                                             fontFamily: 'Poppins',
                                             fontSize: 12,
-                                            color: Color.fromARGB(
-                                                255, 126, 126, 126),
+                                            color: Color.fromARGB(255, 126, 126, 126),
                                           ),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
                                         ),
                                         SizedBox(height: 2),
                                         Text(
-                                          '| ${surat.arti}',
+                                          doa.artinya ?? '',
                                           style: TextStyle(
                                             fontFamily: 'Poppins',
                                             fontSize: 10,
-                                            color: Color.fromARGB(
-                                                255, 126, 126, 126),
+                                            color: Color.fromARGB(255, 126, 126, 126),
                                           ),
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
                                         ),
                                       ],
                                     ),
@@ -150,13 +165,12 @@ class _SuratPageState extends State<SuratPage> {
                         ],
                       ),
                     ),
-                  );
-                },
-              );
-            },
-          ),
+                  ),
+                );
+              },
+            );
+          },
         ),
-        ]
       ),
     );
   }
