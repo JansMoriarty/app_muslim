@@ -103,8 +103,136 @@ class _DetailDoaPageState extends State<DetailDoaPage> {
                 Expanded(
                   child: ListView(
                     controller: _scrollController,
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
                     children: [
+                      // CARD PREVIEW DOA
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 4, vertical: 6),
+                        child: Container(
+                          width: double.infinity,
+                          height: 100,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            color: const Color(0xff181820),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                blurRadius: 2,
+                                offset: const Offset(0, 0),
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          child: Container(
+                                            width: 22,
+                                            height: 22,
+                                            color: const Color.fromARGB(
+                                                44, 255, 153, 0),
+                                            child: Center(
+                                              child: Text(
+                                                doa.id ??
+                                                    "1", // Gunakan ID dari doa
+                                                style: const TextStyle(
+                                                  fontSize: 11,
+                                                  fontFamily: 'Poppins',
+                                                  color: Color.fromARGB(
+                                                      255, 255, 153, 0),
+                                                  fontWeight: FontWeight.w600,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 6),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.30,
+                                          child: Text(
+                                            doa.doa ?? '',
+                                            style: const TextStyle(
+                                              color: Colors.white,
+                                              fontFamily: 'Poppins',
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                        ),
+                                        const Icon(
+                                            Icons.keyboard_arrow_right_rounded,
+                                            color: Colors.white,
+                                            size: 18)
+                                      ],
+                                    ),
+                                    const SizedBox(height: 11),
+                                    const Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          '| Doa Harian',
+                                          style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            fontSize: 12,
+                                            color: Color.fromARGB(
+                                                255, 126, 126, 126),
+                                          ),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                        SizedBox(height: 2),
+                                        Text(
+                                          'Lihat selengkapnya ...',
+                                          style: TextStyle(
+                                            fontFamily: 'Poppins',
+                                            fontSize: 10,
+                                            color: Color.fromARGB(
+                                                255, 126, 126, 126),
+                                          ),
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(18),
+                                child: Opacity(
+                                  opacity: 0.3,
+                                  child: Image.asset(
+                                    'assets/images/doa.png',
+                                    height: 150,
+                                    width: 120,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(height: 16),
+
+                      // KONTAINER UTAMA ISI DETAIL DOA
                       Container(
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(

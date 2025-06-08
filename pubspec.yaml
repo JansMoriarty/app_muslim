@@ -18,11 +18,19 @@ dependencies:
   lottie: ^3.0.0
   shimmer: ^3.0.0
   table_calendar: ^3.0.9
+  simple_animations: ^5.1.0
+  
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/app_icon.png"
 
 flutter:
   uses-material-design: true
@@ -31,7 +39,9 @@ flutter:
    - assets/images/mosque.png
    - assets/images/quran.png
    - assets/images/quran.json
+   - assets/images/doa.png
    - assets/images/read.json
+   - assets/icon/app_icon.png
 
   fonts:
     - family: Poppins

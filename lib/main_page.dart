@@ -3,7 +3,9 @@ import 'package:muslim_app/view/page/about.dart';
 import 'package:muslim_app/view/page/design_for_surat.dart';
 import 'package:muslim_app/view/page/jadwal_page.dart'; // Mengimpor JadwalPage
 import 'package:muslim_app/view/page/month_jadwal_page.dart';
-import 'package:muslim_app/view/page/surat_page.dart';  // Mengimpor SuratPage
+import 'package:muslim_app/view/page/list_doa_page.dart';
+import 'package:muslim_app/view/page/qibla_page.dart';
+
 
 class AnimatedNavBar extends StatefulWidget {
   @override
@@ -46,7 +48,7 @@ class _AnimatedNavBarState extends State<AnimatedNavBar> {
           JadwalPage(),  // Halaman 0: JadwalPage
           NewHome(),   // Halaman 1: SuratPage
           MonthSchedulePage(),
-          AboutPage()
+          DummyQiblaPage()
         ],
       ),
       bottomNavigationBar: Container(

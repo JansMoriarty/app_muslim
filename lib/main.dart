@@ -8,7 +8,7 @@ import 'package:muslim_app/view/page/jadwal_page.dart';
 import 'package:muslim_app/view/loading%20design/loading_design.dart';
 import 'package:muslim_app/view/page/month_jadwal_page.dart';
 import 'package:muslim_app/view/page/splash.dart';
-import 'package:muslim_app/view/page/surat_page.dart';
+import 'package:muslim_app/view/page/list_doa_page.dart';
 import 'package:muslim_app/viewmodel/detail_doa_viewmodel.dart';
 import 'package:muslim_app/viewmodel/doa_viewmodel.dart';
 import 'package:muslim_app/viewmodel/jadwal_viewmodel.dart';

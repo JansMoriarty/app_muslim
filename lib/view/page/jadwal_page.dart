@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:muslim_app/view/loading%20design/loading_design.dart';
 import 'package:muslim_app/view/page/detail_doa.dart';
-import 'package:muslim_app/view/page/surat_page.dart';
+import 'package:muslim_app/view/page/list_doa_page.dart';
 import 'package:muslim_app/viewmodel/jadwal_viewmodel.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';

@@ -45,7 +45,7 @@ class _MonthSchedulePageState extends State<MonthSchedulePage> {
         body: Consumer<MonthScheduleViewModel>(
           builder: (context, vm, _) {
             if (vm.isLoading) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator(color: Color(0xffF77C25)));
             }
             if (vm.errorMessage != null) {
               return Center(
@@ -208,11 +208,11 @@ class _MonthSchedulePageState extends State<MonthSchedulePage> {
   List<Widget> _buildPrayerCards(jadwal) {
   final List<Map<String, dynamic>> prayers = [
     {'name': 'Fajr', 'time': jadwal.subuh, 'icon': Icons.wb_twilight},
-    {'name': 'Dhuha', 'time': jadwal.dhuha, 'icon': Icons.wb_sunny},
-    {'name': 'Dzuhur', 'time': jadwal.dzuhur, 'icon': Icons.wb_incandescent},
-    {'name': 'Asr', 'time': jadwal.ashar, 'icon': Icons.wb_sunny_outlined},
+    {'name': 'Dhuha', 'time': jadwal.dhuha, 'icon': Icons.wb_sunny_outlined},
+    {'name': 'Dzuhur', 'time': jadwal.dzuhur, 'icon': Icons.wb_sunny},
+    {'name': 'Asr', 'time': jadwal.ashar, 'icon': Icons.wb_cloudy},
     {'name': 'Maghrib', 'time': jadwal.maghrib, 'icon': Icons.nightlight},
-    {'name': 'Isha', 'time': jadwal.isya, 'icon': Icons.brightness_2},
+    {'name': 'Isha', 'time': jadwal.isya, 'icon': Icons.nights_stay},
   ];
 
   return prayers.map((p) {

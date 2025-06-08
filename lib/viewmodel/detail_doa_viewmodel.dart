@@ -19,7 +19,12 @@ class DetailDoaViewModel extends ChangeNotifier {
 
       if (response.statusCode == 200) {
         final jsonData = json.decode(response.body);
-        detailDoa = DoaModel.fromJson(jsonData);
+
+        if (jsonData is List && jsonData.isNotEmpty) {
+          detailDoa = DoaModel.fromJson(jsonData[0]);
+        } else {
+          error = "Data kosong atau tidak ditemukan.";
+        }
       } else {
         error = "Gagal memuat data. Status code: ${response.statusCode}";
       }
